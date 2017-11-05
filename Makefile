@@ -18,7 +18,7 @@ MONITOR_PORT  = /dev/ttyACM0
 LED_script: $(OBJS)
 	$(CC) $(LDFLAGS) -o LED_script $(OBJS) $(LDLIBS)
 
-LED_script.o: $(OBJS) LED_script.cpp
+LED_script.o: $(OBJS) LED_script.cpp tests.h
 	$(CC) $(CPPFLAGS) -c LED_script.cpp -o LED_script.o
 
 %.o: %.cpp %.h
@@ -26,3 +26,5 @@ LED_script.o: $(OBJS) LED_script.cpp
 
 clean:
 	rm $(OBJS) LED_script
+
+clean-all: clean LED_script

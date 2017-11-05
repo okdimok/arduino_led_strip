@@ -1,6 +1,9 @@
 #include <stdio.h>
 using namespace std;
 
+#ifndef Color_h
+#define Color_h
+
 class Color {
 public:
 	double h; //hue, from 0 to 360
@@ -19,10 +22,11 @@ public:
 	void set_from_hsla(double* hsla);
 	void get_rgba(double* rgba);
 	void get_hsla(double* hsla);
-	void print();
 
 	bool report_invalidity();
 	bool check_validity();
 
 
 };
+
+#endif

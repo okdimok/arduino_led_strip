@@ -55,10 +55,3 @@ bool Color::check_validity() {
 	if (0 > a || 1 < a)   return false;
 	return true;
 }
-
-void Color::print() {
-	double rgba[4];
-	get_rgba(rgba);
-	int r = rgba[0], g = rgba[1], b = rgba[2];
-	printf("\e[38;2;%d;%d;%dm▀", r, g, b); //add 48;2;0;0;0 for backgroud
-}
