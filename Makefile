@@ -3,7 +3,7 @@ LDFLAGS=-g
 LDLIBS=-lm
 CC=g++
 # INCLUDE_DIRS=-I/home/dima/apps/arduino-1.8.1/hardware/arduino/avr/cores/arduino -I/home/dima/apps/arduino-1.8.1/hardware/tools/avr/avr/include -I/home/dima/apps/arduino-1.8.1/hardware/arduino/avr/variants/leonardo
-SRCS=LED_script.cpp Color.cpp ColorPosition.cpp RGBConverter/RGBConverter.cpp
+SRCS=LED_script.cpp Color.cpp ColorPosition.cpp StripBuffer.cpp Program.cpp Drawables.cpp RGBConverter/RGBConverter.cpp
 OBJS=$(subst .cpp,.o,$(SRCS))
 # MCU = atmega2560
 # CPPFLAGS += -mmcu=$(MCU)

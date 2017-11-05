@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 
-class ColorPrint :public ColorOutput{
+class ColorPrint : public ColorOutput{
 public:
 	ColorPrint(){}
 

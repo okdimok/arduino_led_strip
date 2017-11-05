@@ -1,6 +1,8 @@
 #ifndef StripBuffer_h
 #define StripBuffer_h
 
+#include "Color.h"
+
 const Color black(0, 0, 0, 1);
 
 class StripBuffer {

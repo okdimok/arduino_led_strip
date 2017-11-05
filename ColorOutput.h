@@ -8,16 +8,18 @@
 class ColorOutput {
 public:
 	ColorOutput(){}
-	void init_output(){}
-	void init_buffer_output(){}
+	virtual void init_output(){}
+	virtual void init_buffer_output(){}
 	virtual void output(Color& color){}
 	void output(StripBuffer& buffer){
+		this->init_buffer_output();
 		for (unsigned int i = 0; i < buffer.length; i++){
 			output(buffer.buffer[i]);
 		}
+		this->end_buffer_output();
 	}
-	void end_buffer_output(){}
-	void end_output(){}
+	virtual void end_buffer_output(){}
+	virtual void end_output(){}
 };
 
 #endif
