@@ -55,15 +55,19 @@ void test_cycles_buffer(){
 }
 
 void test_program(){
-	Color red(10, 1., 0.6);
-	Color orange(40, 1., 0.6);
-	Color green(100, 1., 0.6);
+	Color red(10, 1., 0.6, 0.7);
+	Color orange(40, 1., 0.6, 0.7);
+	Color green(100, 1., 0.6, 0.7);
 	StripBuffer strip(60);
 	ColorOutput* print = new ColorPrint();
 	Program p1;
 	ColorMixing mean_color_mixing;
-	ConstantColorSegment seg1(&strip, &mean_color_mixing, red, 0, 10);
+	ConstantColorSegment seg1(&strip, &mean_color_mixing, red, 0, 20);
+	ConstantColorSegment seg2(&strip, &mean_color_mixing, orange, 10, 40);
+	MovingColorSegment seg3(&strip, &mean_color_mixing, green, 30, -10, 3, -3);
 	p1.add_drawable(&seg1);
+	p1.add_drawable(&seg2);
+	p1.add_drawable(&seg3);
 	print->init_output();
 	double time=0;
 	double frequency = 100;
@@ -73,6 +77,7 @@ void test_program(){
 		p1.update_and_draw_all(time);
 		print->output(strip);
 		time+=period;
+		printf(" %g\n", time);
 		usleep(1e6*period);
 	}
 	print->end_output();
