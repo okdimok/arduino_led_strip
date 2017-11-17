@@ -78,8 +78,46 @@ void test_program(){
 		p1.update_and_draw_all(time);
 		print->output(strip);
 		time+=period;
-		printf(" %g\n", time);
+		printf(" %g", time);
 		usleep(1e6*period);
 	}
 	print->end_output();
 }
+
+/*
+void test_ideal_interface(){
+	StripBuffer strip(60);
+	ColorOutput* print = new ColorPrint();
+	Color red(10, 1., 0.6, 0.7);
+	Color orange(40, 1., 0.6, 0.7);
+	Color green(100, 1., 0.6, 0.7);
+	ColorMixing mean_color_mixing;
+
+
+	Program p1(strip);
+	auto tc = TimeDependantColor(10);
+	tc.add(red);
+	tc.add(orange);
+	auto ColorSequence cs;
+	cs.add(tc, 10);
+	cs.add(orange, 30, -10); //position, speed
+	auto blink = Blink(tc, start_time, period, number_of_times);
+	auto blink_added= p1.add(blink, mean_color_mixing);
+
+	print->init_output();
+	double time=0;
+	double frequency = 100;
+	const double period=1/frequency;
+	while (time < 2) {
+		strip.clear();
+		p1.update_and_draw_all(time);
+		print->output(strip);
+		time+=period;
+		printf(" %g\n", time);
+		usleep(1e6*period);
+		if (time>1)p1.delete(blink_added);
+	}
+	print->end_output();
+
+}
+*/
