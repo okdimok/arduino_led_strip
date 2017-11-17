@@ -1,17 +1,17 @@
-#ifndef Drawable_h
-#define Drawable_h
+#ifndef BufferDrawable_h
+#define BufferDrawable_h
 
 #include "StripBuffer.h"
 #include "ColorMixing.h"
 
-class Drawable {
+class BufferDrawable {
 protected:
 	StripBuffer* buffer;
 	ColorMixing* color_mixing;
 	virtual void update_and_draw(double time){};
 public:
-	Drawable() : buffer(NULL), color_mixing(NULL) {}
-	Drawable (StripBuffer* buffer_, ColorMixing* color_mixing_) : buffer(buffer_), color_mixing(color_mixing_) {}
+	BufferDrawable() : buffer(NULL), color_mixing(NULL) {}
+	BufferDrawable (StripBuffer* buffer_, ColorMixing* color_mixing_) : buffer(buffer_), color_mixing(color_mixing_) {}
 	void set_buffer(StripBuffer* buffer_){
 		buffer = buffer_;
 	}

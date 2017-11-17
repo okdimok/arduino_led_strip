@@ -1,11 +1,11 @@
-#ifndef Drawables_h
-#define Drawables_h
+#ifndef BufferDrawables_h
+#define BufferDrawables_h
 
 #include "StripBuffer.h"
 #include "ColorMixing.h"
-#include "Drawable.h"
+#include "BufferDrawable.h"
 
-class ConstantColorSegment : public Drawable {
+class ConstantColorSegment : public BufferDrawable {
 protected:
 	Color color;
 	unsigned int begin, end;
@@ -16,7 +16,7 @@ protected:
 	}
 public:
 	ConstantColorSegment (StripBuffer* buffer_, ColorMixing* color_mixing_, Color& color_,
-		int begin_ = 0, int end_ = -1) : Drawable(buffer_, color_mixing_), color(color_) {
+		int begin_ = 0, int end_ = -1) : BufferDrawable(buffer_, color_mixing_), color(color_) {
 			if (begin_ < 0) {
 				begin = buffer->length + begin_;
 			} else{
@@ -31,7 +31,7 @@ public:
 		}
 };
 
-class MovingColorSegment : public Drawable {
+class MovingColorSegment : public BufferDrawable {
 protected:
 	Color color;
 	unsigned int begin, end;
@@ -46,7 +46,7 @@ protected:
 public:
 	MovingColorSegment (StripBuffer* buffer_, ColorMixing* color_mixing_, Color& color_,
 		int begin_ = 0, int end_ = -1, double speed_left_ = 0 , double speed_right_ = 0) :
-			Drawable(buffer_, color_mixing_), color(color_),
+			BufferDrawable(buffer_, color_mixing_), color(color_),
 			speed_left(speed_left_), speed_right(speed_right_){
 			if (begin_ < 0) {
 				begin = buffer->length + begin_;
