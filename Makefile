@@ -20,13 +20,13 @@ OBJS=$(subst $(SRC_DIR)/,$(OBJ_DIR)/,$(subst .cpp,.o,$(SRCS)))
 BOARD_TAG     = mega2560
 MONITOR_PORT  = /dev/ttyACM0
 # include $(ARDMK_DIR)/Arduino.mk
+# @echo $(OBJS)
+# @echo target: $@, prerequisites: $^
 
 LED_script: $(OBJS)
-	# @echo $(OBJS)
 	$(CC) $(LDFLAGS) -o LED_script $(OBJS) $(LDLIBS) $(INCLUDE_DIRS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC_DIR)/%.h
-	# @echo target: $@, prerequisites: $^
 	$(CC) $(CPPFLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 
 test-make:

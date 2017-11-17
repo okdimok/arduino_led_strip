@@ -3,8 +3,6 @@
 
 #include "Color.h"
 
-const Color black(0, 0, 0, 1);
-
 class StripBuffer {
 public:
 	unsigned int length;
