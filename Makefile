@@ -37,8 +37,8 @@ clean::
 
 clean-all: clean LED_script
 
-#
-#
+
+
 # MCU = atmega2560
 # CPPFLAGS += -mmcu=$(MCU)
 # LDFLAGS += -mmcu=$(MCU)
@@ -53,6 +53,6 @@ clean-all: clean LED_script
 # LOCAL_INO_SRCS=$(wildcard $(SRC_DIR)/*.ino)
 # AVR_TOOLS_DIR = /usr
 # include $(ARDMK_DIR)/Arduino.mk
-#
-# # @echo $(OBJS)
-# # @echo target: $@, prerequisites: $^
+
+# @echo $(OBJS)
+# @echo target: $@, prerequisites: $^

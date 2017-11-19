@@ -31,6 +31,6 @@ public:
 
 };
 
-ColorMixing mean_color_mixing;
+ColorMixing const mean_color_mixing;
 
 #endif
