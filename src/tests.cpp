@@ -102,17 +102,18 @@ void test_new_drawable(){
 	Color green(100, 1., 0.6, 0.7);
 
 	Color tc1[2] = {red, orange};
-	auto tc = ColorTimeGradient(tc1, 2, 0.5);
+	auto tc = ColorTimeGradient(tc1, 2, 0.8);
 
 	/*auto ColorSequence cs;
 	cs.add(tc, 10);
 	cs.add(orange, 30, -10); //position, speed*/
 	auto cs = ColorSegment(&tc, 10, 30);
-	auto blink = Blinking(static_cast<Drawable*>(&cs), 0.1, 0.05);
+	auto blink = Blinking(static_cast<Drawable*>(&cs), 0.5, 0.4);
+	auto move = Moving(static_cast<Drawable*>(&blink), 10);
 
 	Program p1(&strip);
 	ColorMixing* cm = (ColorMixing*) &mean_color_mixing;
-	p1.add_drawable(&blink, cm);
+	p1.add_drawable(&move, cm);
 
 
 
@@ -125,7 +126,7 @@ void test_new_drawable(){
 		p1.update_and_draw_all(time);
 		print->output(strip);
 		time+=period;
-		printf(" %g\n", time);
+		printf(" %g", time);
 		usleep(1e6*period);
 	}
 	print->end_output();
