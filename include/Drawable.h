@@ -1,5 +1,8 @@
 #ifndef Drawable_h
 #define Drawable_h
+
+#include "Color.h"
+
 class Drawable {
 private:
 
@@ -11,28 +14,46 @@ public:
 
 };
 
-class Moving : public Drawable {
+class DrawableWrapper : public Drawable {
+private:
+	Drawable* drawable;
+public:
+	DrawableWrapper (Drawable* drawable_) : drawable_(drawable) {};
+	Color get_color_at_position_at_time(double position, double time) { return drawable->get_color_at_position_at_time(position, time); };
+	int most_left_index() {return drawable->most_left_index();}
+	int most_right_index() {return drawable->most_right_index();}
+
+};
+
+
+class Moving : public DrawableWrapper {
 private:
 	/* data */
-	Drawable* drawable;
 	double speed, offset;
 
 public:
-	Moving (Drawable* drawable_, double speed_, double offset_ = 0) : drawable(drawable_) , speed(speed_), offset(offset_) {};
+	Moving (Drawable* drawable_, double speed_, double offset_ = 0) : DrawableWrapper(drawable_) , speed(speed_), offset(offset_) {};
 	Color get_color_at_position_at_time(double position, double time) {return drawable->get_color_at_position_at_time(position - speed*time - offset, time);}
+	int most_left_index() {
+		int left = drawable->most_left_index();
+		return (int)(position - speed*time - offset) - 1;
+	}
+	int most_right_index() {
+		int right = drawable->most_right_index();
+		return (int)(position - speed*time - offset) + 1;
+	}
 };
 
-class Blinking : public Drawable {
+class Blinking : public DrawableWrapper {
 private:
 	/* data */
-	Drawable* drawable;
 	double period, period_on, delay;
 	int times;
 	bool restart_time;
 
 public:
 	Blinking (Drawable* drawable_, double period_, double period_on_,
-		int times_=-1, double delay_ = 0, bool restart_time_=0) : drawable(drawable_) , period(period_), period_on(period_on_),
+		int times_=-1, double delay_ = 0, bool restart_time_=0) : DrawableWrapper(drawable_) , period(period_), period_on(period_on_),
 		 times(times_), delay(delay_), restart_time(restart_time_) {};
 	Color get_color_at_position_at_time(double position, double time) {
 		double local_time = time - delay;

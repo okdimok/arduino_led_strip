@@ -30,4 +30,7 @@ public:
 	}
 
 };
+
+ColorMixing mean_color_mixing;
+
 #endif

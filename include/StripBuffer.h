@@ -14,5 +14,8 @@ public:
 			buffer[i] = color;
 		}
 	}
+	~StripBuffer(){
+		delete[] buffer;
+	}
 };
 #endif
