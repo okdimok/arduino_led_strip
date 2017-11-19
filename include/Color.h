@@ -30,5 +30,6 @@ public:
 };
 
 const Color black(0, 0, 0, 1);
+const Color opaque(0, 0, 0, 0);
 
 #endif

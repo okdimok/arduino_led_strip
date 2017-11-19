@@ -3,8 +3,11 @@
 #include "StripBuffer.h"
 #include "Program.h"
 #include "BufferDrawables.h"
+#include "Drawables.h"
+#include "Drawable.h"
 #include "tests.h"
 #include "ForArduino.h"
+#include "ColorTimeGradient.h"
 #ifndef ARDUINO
 #include <unistd.h> //usleep
 #else
@@ -90,24 +93,26 @@ void test_program(){
 	print->end_output();
 }
 
-/*
-void test_ideal_interface(){
+
+void test_new_drawable(){
 	StripBuffer strip(60);
 	ColorOutput* print = new ColorPrint();
 	Color red(10, 1., 0.6, 0.7);
 	Color orange(40, 1., 0.6, 0.7);
 	Color green(100, 1., 0.6, 0.7);
 
-	Colors[2] tc1 = {red, orange}
+	Color tc1[2] = {red, orange};
 	auto tc = ColorTimeGradient(tc1, 2, 0.5);
 
-	auto ColorSequence cs;
+	/*auto ColorSequence cs;
 	cs.add(tc, 10);
-	cs.add(orange, 30, -10); //position, speed
-	auto blink = Blink(tc, start_time, period, number_of_times);
+	cs.add(orange, 30, -10); //position, speed*/
+	auto cs = ColorSegment(&tc, 10, 30);
+	auto blink = Blinking(static_cast<Drawable*>(&cs), 0.1, 0.05);
 
-	Program p1(strip);
-	auto blink_added= p1.add(blink, mean_color_mixing);
+	Program p1(&strip);
+	ColorMixing* cm = (ColorMixing*) &mean_color_mixing;
+	p1.add_drawable(&blink, cm);
 
 
 
@@ -122,9 +127,7 @@ void test_ideal_interface(){
 		time+=period;
 		printf(" %g\n", time);
 		usleep(1e6*period);
-		if (time>1)p1.delete(blink_added);
 	}
 	print->end_output();
 
 }
-*/

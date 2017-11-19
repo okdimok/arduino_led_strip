@@ -8,8 +8,8 @@ class Drawable {
 private:
 
 public:
-	Drawable ();
-	virtual Color get_color_at_position_at_time(double position, double time);
+	Drawable () {};
+	virtual Color get_color_at_position_at_time(double position, double time) {return opaque;};
 	virtual int most_left_index(double time) {return 0;}
 	virtual int most_right_index(double time) {return -1;}
 	virtual double start_time() {return 0;}
@@ -21,7 +21,7 @@ class DrawableWrapper : public Drawable {
 protected:
 	Drawable* drawable;
 public:
-	DrawableWrapper (Drawable* drawable_) : drawable(drawable_) {};
+	DrawableWrapper (Drawable* drawable_) {drawable = drawable_;};
 	Color get_color_at_position_at_time(double position, double time) { return drawable->get_color_at_position_at_time(position, time); };
 	int most_left_index(double time) {return drawable->most_left_index(time);}
 	int most_right_index(double time) {return drawable->most_right_index(time);}

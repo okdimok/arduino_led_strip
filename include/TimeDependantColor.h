@@ -7,8 +7,8 @@ class TimeDependantColor {
 private:
 	/* data */
 public:
-	TimeDependantColor ();
-	virtual Color get_color(double time){};
+	TimeDependantColor (){};
+	virtual Color get_color(double time){return opaque;};
 	// virtual ~TimeDependantColor ();
 };
 
@@ -19,8 +19,8 @@ private:
 
 public:
 	ConstantTimeDependantColor () : primary_color(black) {};
-	ConstantTimeDependantColor (Color& color) primary_color(color);
-	virtual Color get_color(double time){retun primary_color; };
+	ConstantTimeDependantColor (Color& color) {primary_color = color;}
+	virtual Color get_color(double time){return primary_color; };
 	// virtual ~TimeDependantColor ();
 };
 

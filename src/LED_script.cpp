@@ -4,5 +4,5 @@
 using namespace std;
 
 int main(int argc, char** argv){
-	test_program();
+	test_new_drawable();
 }

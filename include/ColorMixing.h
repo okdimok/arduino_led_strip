@@ -10,12 +10,15 @@ private:
 
 public:
 	ColorMixing () {};
-	Color mix(Color& c1, Color& c2) {
+	Color mix(Color& c1, Color& c2, double proportion=-1) {
 		Color c;
-		c.h = mix(c1.h, c2.h, c2.a);
-		c.s = mix(c1.s, c2.s, c2.a);
-		c.l = mix(c1.l, c2.l, c2.a);
+		double new_part = c2.a;
+		if (proportion >= 0 && proportion <= 1 ) new_part = proportion;
+		c.h = mix(c1.h, c2.h, new_part);
+		c.s = mix(c1.s, c2.s, new_part);
+		c.l = mix(c1.l, c2.l, new_part);
 		c.a = max(c1.a, c2.a);
+		if (proportion >= 0 && proportion <= 1 ) c.a = mix(c1.a, c2.a, proportion);
 		return c;
 	}
 
