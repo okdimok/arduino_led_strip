@@ -1,14 +1,18 @@
-#include "tests.h"
-#include "ForArduino.h"
+// #include "tests.h"
+// #include "ForArduino.h"
+// #include "Arduino.h"
 
-#define ARDUINO
 
-using namespace std;
+// using namespace std;
 
 void setup(){
-	pinMode(13, OUTPUT)
+	pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop(){
-	test_program();
+	// test_program();
+	digitalWrite(LED_BUILTIN, 1);
+	delay(100);
+	digitalWrite(LED_BUILTIN, 0);
+	delay(100);
 }

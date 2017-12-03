@@ -1,4 +1,4 @@
-CPPFLAGS=-Wall -std=c++11 
+CPPFLAGS=-Wall -std=c++11
 LDFLAGS=
 LDLIBS=
 CC=g++
@@ -36,23 +36,3 @@ clean::
 	rm $(OBJS) LED_script
 
 clean-all: clean LED_script
-
-
-
-# MCU = atmega2560
-# CPPFLAGS += -mmcu=$(MCU)
-# LDFLAGS += -mmcu=$(MCU)
-#
-# CC=avr-g++
-# BOARD_TAG     = mega2560
-# MONITOR_PORT  = /dev/ttyACM0
-# INCLUDE_DIRS+=-I/home/dima/apps/arduino-1.8.1/hardware/arduino/avr/cores/arduino -I/home/dima/apps/arduino-1.8.1/hardware/tools/avr/avr/include -I/home/dima/apps/arduino-1.8.1/hardware/arduino/avr/variants/leonardo
-# LDLIBS+= -L/home/dima/apps/arduino-1.8.1/hardware/tools/avr/avr/lib/avr6 -latmega2560 -lc
-#
-# LOCAL_CPP_SRCS=$(SRCS)
-# LOCAL_INO_SRCS=$(wildcard $(SRC_DIR)/*.ino)
-# AVR_TOOLS_DIR = /usr
-# include $(ARDMK_DIR)/Arduino.mk
-
-# @echo $(OBJS)
-# @echo target: $@, prerequisites: $^

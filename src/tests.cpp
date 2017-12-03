@@ -8,6 +8,7 @@
 #include "tests.h"
 #include "ForArduino.h"
 #include "ColorTimeGradient.h"
+
 #ifndef ARDUINO
 #include <unistd.h> //usleep
 #else
@@ -108,7 +109,7 @@ void test_new_drawable(){
 	cs.add(tc, 10);
 	cs.add(orange, 30, -10); //position, speed*/
 	auto cs = ColorSegment(&tc, 10, 30);
-	auto blink = Blinking(static_cast<Drawable*>(&cs), 0.5, 0.4);
+	auto blink = Blinking(static_cast<Drawable*>(&cs), 0.5, 0.5);
 	auto move = Moving(static_cast<Drawable*>(&blink), 10);
 
 	Program p1(&strip);
@@ -119,7 +120,7 @@ void test_new_drawable(){
 
 	print->init_output();
 	double time=0;
-	double frequency = 100;
+	double frequency = 1000;
 	const double period=1/frequency;
 	while (time < 2) {
 		strip.clear();
