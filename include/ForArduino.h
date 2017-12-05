@@ -6,25 +6,6 @@
 #include <stdlib.h>
 
 #ifdef ARDUINO
-// void * operator new(size_t size)
-// {
-//   return malloc(size);
-// }
-//
-// void operator delete(void * ptr)
-// {
-//   free(ptr);
-// }
-//
-// void * operator new[](size_t size)
-// {
-//     return malloc(size);
-// }
-//
-// void operator delete[](void * ptr)
-// {
-//     free(ptr);
-// }
 #include "Arduino.h"
 #endif
 #endif

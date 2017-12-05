@@ -10,7 +10,8 @@ protected:
 	Color color;
 	unsigned int begin, end;
 	void update_and_draw(double time){
-		for (unsigned int i = begin; i <= end && i >=0 && i < buffer->length; i++){
+		(void) time;
+		for (unsigned int i = begin; i <= end && i < buffer->length; i++){
 			buffer->buffer[i] = color_mixing->mix(buffer->buffer[i], color);
 		}
 	}
@@ -39,7 +40,7 @@ protected:
 	void update_and_draw(double time){
 		unsigned int begin_c = begin + speed_left * time;
 		unsigned int end_c = end + speed_right * time;
-		for (unsigned int i = begin_c; i <= end_c && i >=0 && i < buffer->length; i++){
+		for (unsigned int i = begin_c; i <= end_c && i < buffer->length; i++){
 			buffer->buffer[i] = color_mixing->mix(buffer->buffer[i], color);
 		}
 	}

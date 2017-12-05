@@ -10,11 +10,11 @@
 
 class Program {
 private:
-	BufferDrawable** drawables;
+	BufferDrawable* drawables[DRAWABLES_MAX];
 	unsigned int drawables_number;
 	StripBuffer* strip;
 public:
-	Program(StripBuffer* strip_=NULL) : drawables_number(0), strip(strip_){drawables = new BufferDrawable*[DRAWABLES_MAX];};
+	Program(StripBuffer* strip_=NULL) : drawables_number(0), strip(strip_){};
 	unsigned int add_drawable(BufferDrawable* d) {
 		if (drawables_number >= DRAWABLES_MAX) return -1;
 		else {
@@ -25,8 +25,8 @@ public:
 	}
 	unsigned int add_drawable(Drawable* d, ColorMixing* color_mixing) {
 		if (!strip || drawables_number >= DRAWABLES_MAX) return -1;
-		BufferDrawableDrawable* bd = new BufferDrawableDrawable(d, strip, color_mixing);
-		return add_drawable(bd); //TODO Memory leak!!!
+		BufferDrawable* bd = new BufferDrawableDrawable(d, strip, color_mixing);
+		return add_drawable(bd);
 	}
 	int update_and_draw_all(double time){
 		for (unsigned int i = 0; i < drawables_number; i++){

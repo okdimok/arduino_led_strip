@@ -8,7 +8,7 @@ private:
 	/* data */
 public:
 	TimeDependantColor (){};
-	virtual Color get_color(double time){return opaque;};
+	virtual Color get_color(double time){(void) time; return opaque;};
 	// virtual ~TimeDependantColor ();
 };
 
@@ -20,7 +20,7 @@ private:
 public:
 	ConstantTimeDependantColor () : primary_color(black) {};
 	ConstantTimeDependantColor (Color& color) {primary_color = color;}
-	virtual Color get_color(double time){return primary_color; };
+	virtual Color get_color(double time){(void) time; return primary_color; };
 	// virtual ~TimeDependantColor ();
 };
 

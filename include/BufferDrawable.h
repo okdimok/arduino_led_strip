@@ -8,7 +8,7 @@ class BufferDrawable {
 protected:
 	StripBuffer* buffer;
 	ColorMixing* color_mixing;
-	virtual void update_and_draw(double time){};
+	virtual void update_and_draw(double time){(void) time;};
 public:
 	BufferDrawable() : buffer(NULL), color_mixing(NULL) {}
 	BufferDrawable (StripBuffer* buffer_, ColorMixing* color_mixing_) : buffer(buffer_), color_mixing(color_mixing_) {}

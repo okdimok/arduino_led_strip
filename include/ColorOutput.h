@@ -10,7 +10,7 @@ public:
 	ColorOutput(){}
 	virtual void init_output(){}
 	virtual void init_buffer_output(){}
-	virtual void output(Color& color){}
+	virtual void output(Color& color){(void) color;}
 	void output(StripBuffer& buffer){
 		this->init_buffer_output();
 		for (unsigned int i = 0; i < buffer.length; i++){

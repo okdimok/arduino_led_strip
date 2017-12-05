@@ -1,4 +1,4 @@
-CPPFLAGS=-Wall -std=c++11
+CXXFLAGS=-Wall -std=gnu++11
 LDFLAGS=
 LDLIBS=
 CC=g++
@@ -22,10 +22,10 @@ LED_script: $(OBJS)
 	$(CC) $(LDFLAGS) -o LED_script $(OBJS) $(LDLIBS) $(INCLUDE_DIRS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC_DIR)/%.h
-	$(CC) $(CPPFLAGS) -c $< -o $@ $(INCLUDE_DIRS)
+	$(CC) $(CXXFLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 
 RGBConverter/RGBConverter.o: RGBConverter/RGBConverter.cpp RGBConverter/RGBConverter.h
-	$(CC) $(CPPFLAGS) -c $< -o $@ $(INCLUDE_DIRS)
+	$(CC) $(CXXFLAGS) -c $< -o $@ $(INCLUDE_DIRS)
 
 test-make:
 	@echo SRCS: $(SRCS)

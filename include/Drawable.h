@@ -9,9 +9,9 @@ private:
 
 public:
 	Drawable () {};
-	virtual Color get_color_at_position_at_time(double position, double time) {return opaque;};
-	virtual int most_left_index(double time) {return 0;}
-	virtual int most_right_index(double time) {return -1;}
+	virtual Color get_color_at_position_at_time(double position, double time) {(void) position; (void)time; return opaque;};
+	virtual int most_left_index(double time) {(void) time; return 0;}
+	virtual int most_right_index(double time) {(void) time; return -1;}
 	virtual double start_time() {return 0;}
 	virtual double end_time() {return -1;}
 
