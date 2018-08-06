@@ -1,6 +1,6 @@
-// #include "tests.h"
-// #include "ForArduino.h"
-// #include "Arduino.h"
+#include "tests.h"
+#include "ForArduino.h"
+#include "Arduino.h"
 
 
 // using namespace std;
@@ -8,6 +8,7 @@
 void setup(){
 	// pinMode(LED_BUILTIN, OUTPUT);
 	Serial.begin(115200);
+	test_new_drawable();
 }
 
 int i = 0;
