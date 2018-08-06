@@ -9,10 +9,10 @@
 #include "ForArduino.h"
 #include "ColorTimeGradient.h"
 
-#ifndef ARDUINO
-#include <unistd.h> //usleep
-#else
+#ifdef ARDUINO
 void usleep(double us){}
+#else
+#include <unistd.h> //usleep
 #endif
 
 void test_color(){

@@ -1,15 +1,16 @@
 include Makefile
+
 # MCU = atmega2560
 # CPPFLAGS += -mmcu=$(MCU)
 # LDFLAGS += -mmcu=$(MCU)
 
 # CC=avr-g++
-# BOARD_TAG    = mega
-# BOARD_SUB    = atmega2560
-# MONITOR_PORT  = /dev/tty_arduino_led
+BOARD_TAG    = mega
+BOARD_SUB    = atmega2560
+MONITOR_PORT  = /dev/tty_arduino_led
 
-BOARD_TAG = uno
-MONITOR_PORT  = /dev/ttyUSB1
+# BOARD_TAG = uno
+# MONITOR_PORT  = /dev/ttyUSB1
 
 # INCLUDE_DIRS+=-I/home/dima/apps/arduino-1.8.1/hardware/arduino/avr/cores/arduino -I/home/dima/apps/arduino-1.8.1/hardware/tools/avr/avr/include -I/home/dima/apps/arduino-1.8.1/hardware/arduino/avr/variants/leonardo
 LDLIBS+= -L/home/dima/apps/arduino-1.8.1/hardware/tools/avr/avr/lib/avr6 -latmega2560 -lc
@@ -33,6 +34,7 @@ CXXFLAGS += -fpermissive
 CXXFLAGS += -fno-threadsafe-statics
 AR_NAME = avr-gcc-ar
 MAKE=make -f arduino.make
+
 include $(ARDMK_DIR)/Arduino.mk
 
 # @echo $(OBJS)

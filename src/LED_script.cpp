@@ -3,6 +3,8 @@
 
 using namespace std;
 
-// int main(int argc, char** argv){
-//     test_new_drawable();
-// }
+#ifndef ARDUINO
+int main(int argc, char** argv){
+    test_new_drawable();
+}
+#endif
